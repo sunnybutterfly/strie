@@ -1,18 +1,19 @@
-###############
-### Compilation
-###############
+# Compilation
 
-# Download STRIE
+## Download STRIE
 git clone git://github.com/sunnybutterfly/strie
 cd strie
 
-# If you have the BAMTOOLS C++ library installed, enter the paths here if 
-# necessary (e.g. BAMTOOLS_SRC_DIR="/usr/include/", 
-# BAMTOOLS_LIB_DIR="/usr/include/").
+## BAMTOOLS
+If you have the BAMTOOLS C++ library installed, enter the paths here if 
+necessary (e.g. BAMTOOLS_SRC_DIR="/usr/include/", 
+BAMTOOLS_LIB_DIR="/usr/include/").
+
 BAMTOOLS_SRC_DIR=""
 BAMTOOLS_LIB_DIR=""
 
-# Otherwise, install as follows.
+Otherwise, install as follows.
+
 BAMTOOLS_SRC_DIR="../bamtools"
 BAMTOOLS_LIB_DIR="../bamtools"
 
@@ -20,12 +21,15 @@ git clone https://github.com/pezmaster31/bamtools
 cd bamtools; mkdir build; cd build; cmake ..; make
 cd ..; cd ..
 
-# If you have the BOOST C++ libraries installed, enter the path here if 
-# necessary (e.g. "/usr/include/").
+## BOOST
+
+If you have the BOOST C++ libraries installed, enter the path here if 
+necessary (e.g. "/usr/include/").
+
 BOOST_SRC_DIR=""
 BOOST_LIB_DIR=""
 
-# Otherwise, install as follows.
+Otherwise, install as follows.
 BOOST_SRC_DIR="../boost-trunk"
 BOOST_LIB_DIR="../boost-trunk"
 
@@ -33,14 +37,13 @@ svn co http://svn.boost.org/svn/boost/trunk boost-trunk
 cd boost-trunk; ./bootstrap.sh --prefix=./; ./b2 install
 cd ..
 
-# Compile STRIE
+## Compile STRIE
+
 cd src
 g++-4.7 -o strie main.cpp -std=c++11 -std=gnu++11 -g -O2 -fPIC -Wall ${BAMTOOLS_LIB_DIR}/lib/libbamtools.a -I${BAMTOOLS_SRC_DIR}/include -I{BOOST_SRC_DIR} -L{BOOST_LIB_DIR} -l boost_filesystem -l boost_system -l boost_program_options-mt -lz
 
 
-################
-### Introduction
-################
+# Introduction
 
 STRIE (Short Tandem Repeat Indel Estimator) is a software package for estimating
 genotypes of STR loci. It estimates genotypes using a statistical algorithm of
@@ -80,23 +83,17 @@ ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/technical/pilot2_high_cov_GRCh37_bams/d
 To estimate the genotypes, run first STRIE FREQ and then STRIE EST.
 
 
-################
-### Availability
-################
+# Availability
 
 STRIE is relased under [GPLv3][1] and can be downloaded from [2] at Github.
 
 
-################
-### Seeking help
-################
+# Seeking help
 
 Please write questions to [3].
 
 
-##############
-### Citing BWA
-##############
+# Citing BWA
 
 STRIE was developed in part by PhD student Weldon Whitener in Richard Durbin's 
 group at the Wellcome Trust Sanger Institute, Cambridge, UK. I later rewrote it
