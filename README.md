@@ -1,46 +1,48 @@
 # Compilation
 
 ## Download STRIE
-git clone git://github.com/sunnybutterfly/strie
-cd strie
+	git clone git://github.com/sunnybutterfly/strie
+	cd strie
 
 ## BAMTOOLS
-If you have the BAMTOOLS C++ library installed, enter the paths here if 
-necessary (e.g. BAMTOOLS_SRC_DIR="/usr/include/", 
-BAMTOOLS_LIB_DIR="/usr/include/").
 
-BAMTOOLS_SRC_DIR=""
-BAMTOOLS_LIB_DIR=""
+If you have the BAMTOOLS C++ library installed, enter the paths here if 
+necessary (e.g. `BAMTOOLS_SRC_DIR="/usr/include/"`, 
+`BAMTOOLS_LIB_DIR="/usr/include/"`).
+
+	BAMTOOLS_SRC_DIR="" 
+	BAMTOOLS_LIB_DIR=""
 
 Otherwise, install as follows.
 
-BAMTOOLS_SRC_DIR="../bamtools"
-BAMTOOLS_LIB_DIR="../bamtools"
-
-git clone https://github.com/pezmaster31/bamtools
-cd bamtools; mkdir build; cd build; cmake ..; make
-cd ..; cd ..
+	BAMTOOLS_SRC_DIR="../bamtools"
+	BAMTOOLS_LIB_DIR="../bamtools"
+	
+	git clone https://github.com/pezmaster31/bamtools
+	cd bamtools; mkdir build; cd build; cmake ..; make
+	cd ..; cd ..
 
 ## BOOST
 
 If you have the BOOST C++ libraries installed, enter the path here if 
-necessary (e.g. "/usr/include/").
+necessary (e.g. `"/usr/include/"`).
 
-BOOST_SRC_DIR=""
-BOOST_LIB_DIR=""
+	BOOST_SRC_DIR=""
+	BOOST_LIB_DIR=""
 
 Otherwise, install as follows.
-BOOST_SRC_DIR="../boost-trunk"
-BOOST_LIB_DIR="../boost-trunk"
 
-svn co http://svn.boost.org/svn/boost/trunk boost-trunk
-cd boost-trunk; ./bootstrap.sh --prefix=./; ./b2 install
-cd ..
+	BOOST_SRC_DIR="../boost-trunk"
+	BOOST_LIB_DIR="../boost-trunk"
+	
+	svn co http://svn.boost.org/svn/boost/trunk boost-trunk
+	cd boost-trunk; ./bootstrap.sh --prefix=./; ./b2 install
+	cd ..
 
 ## Compile STRIE
 
-cd src
-g++-4.7 -o strie main.cpp -std=c++11 -std=gnu++11 -g -O2 -fPIC -Wall ${BAMTOOLS_LIB_DIR}/lib/libbamtools.a -I${BAMTOOLS_SRC_DIR}/include -I{BOOST_SRC_DIR} -L{BOOST_LIB_DIR} -l boost_filesystem -l boost_system -l boost_program_options-mt -lz
+	cd src
+	g++-4.7 -o strie main.cpp -std=c++11 -std=gnu++11 -g -O2 -fPIC -Wall ${BAMTOOLS_LIB_DIR}/lib/libbamtools.a -I${BAMTOOLS_SRC_DIR}/include -I{BOOST_SRC_DIR} -L{BOOST_LIB_DIR} -l boost_filesystem -l boost_system -l boost_program_options-mt -lz
 
 
 # Introduction
@@ -68,29 +70,29 @@ should have a reference length of 30-250 nt and contain indels no longer than
 (+/-) 30 nt.
 
 STRIE contains two algorithms. First, an MPERS distribution of each read 
-library must be created. This is STRIE FREQ. The other algorithm, STRIE EST, 
-estimates genotypes of repeat loci. The statistical algorithm in STRIE EST 
+library must be created. This is **STRIE FREQ**. The other algorithm, **STRIE EST**, 
+estimates genotypes of repeat loci. The statistical algorithm in **STRIE EST** 
 requires a set of prior probabilities located in "test/indel_priors_15mers.txt".
 STR locus coordinates of 15-mers are located in 
-"test/str_locus_coordinates_chr22_15-mers.txt". An example of how to run STRIE
-can be found in the file "test/test.sh" and it requires the BAM file of chr. 22
+**test/str_locus_coordinates_chr22_15-mers.txt**. An example of how to run STRIE
+can be found in the file **test/test.sh** and it requires the BAM file of chr. 22
 of NA12878.
 
 The BAM files of NA12878 from the 1,000 Genomes Project are 
-NA12878.chromX.ILLUMINA.bwa.CEU.high_coverage.20100311.bam, where X is a 
-chromosome, located at 
-ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/technical/pilot2_high_cov_GRCh37_bams/data/NA12878/alignment/.
+**NA12878.chromX.ILLUMINA.bwa.CEU.high_coverage.20100311.bam**, where X is a 
+chromosome, located at [the 1,000 Genomes Project FTP site][4].
+
 To estimate the genotypes, run first STRIE FREQ and then STRIE EST.
 
 
 # Availability
 
-STRIE is relased under [GPLv3][1] and can be downloaded from [2] at Github.
+STRIE is relased under [GPLv3][1] and can be downloaded from [Github][2].
 
 
 # Seeking help
 
-Please write questions to [3].
+Please write questions at [Github][3].
 
 
 # Citing BWA
@@ -107,3 +109,4 @@ November 20/11/2013.
 [1]: http://en.wikipedia.org/wiki/GNU_General_Public_License
 [2]: https://github.com/sunnybutterfly/strie
 [3]: https://github.com/sunnybutterfly/strie/issues
+[4]: ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/technical/pilot2_high_cov_GRCh37_bams/data/NA12878/alignment/
