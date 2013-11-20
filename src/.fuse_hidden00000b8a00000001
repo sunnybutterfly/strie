@@ -1,0 +1,26 @@
+#SAMTOOLS="/media/DAGGE/Universitet/UCC/Projects/SAMtools/samtools-0.1.10"
+#SAMDIR="~/lib/samtools-0.1.12a"
+#BAMTOOLS_DIR="/home/dagge/lib/pezmaster31-bamtools-466bc50"
+
+#rm *.o *.so
+#cython -X boundscheck=True -X wraparound=True -f --cplus StrIndelEst.pyx
+#g++ StrIndelEst.cpp -c -g -O2 -Wall -fPIC -I/usr/include/python2.6/ -I/usr/lib/python2.6/ -I${BAMTOOLS_DIR}/include -I$SAMDIR -L$SAMDIR -lbam -lz -std=c++0x
+#g++ StrIndelEst.cpp -c -g -O2 -Wall -fPIC -I/usr/include/python2.6/ -I/usr/lib/python2.6/ -I${BAMTOOLS_DIR}/include -std=c++0x
+#g++ -o StrIndelEst.so StrIndelEst.o -shared -g -O2 ${SAMDIR}/libbam.a ${BAMTOOLS_DIR}/lib/libbamtools.a -std=c++0x
+#g++ -o StrIndelEst.so StrIndelEst.o -shared -g -O2 ${BAMTOOLS_DIR}/lib/libbamtools.a -std=c++0x
+#cp StrIndelEst.so /home/daggy/lib/StrIndelEst/StrIndelEst.so
+#sudo ln -s -f /home/daggy/lib/StrIndelEst/StrIndelEst.so /usr/local/lib/python2.6/dist-packages
+
+#python -Qnew test.py
+
+# python setup.py build_ext --inplace
+
+BAMTOOLS_DIR="/home/daggy/lib/bamtools-2.2.2"
+#BAMTOOLS_DIR="/home/daggy/usr/lib/bamtools-2.6.4"
+g++ -o strie main.cpp -g -O2 -fPIC -Wall ${BAMTOOLS_DIR}/lib/libbamtools.a -I${BAMTOOLS_DIR}/include -lz -I"/usr/include/" -lPocoData -lPocoFoundation -lPocoSQLite  #-I"/usr/include/qt4/QtSql/" -I"/usr/include/qt4/" -lQtSql
+
+#cp strie ${HOME}/lib/strie/strie_weldon
+#sudo ln -s -f ${HOME}/lib/strie/strie_weldon ${HOME}/bin/strie_weldon
+
+
+

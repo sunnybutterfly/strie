@@ -1,0 +1,12 @@
+./strie est \
+  --out "est.txt" \
+  --bam "/media/Dagge/UCC other/1000GP/Data/NA12878/NA12878.chrom22.ILLUMINA.bwa.CEU.high_coverage.20100311.bam" \
+  --loc "/media/Dagge/UCC/project/microsatellite/locus/3-mer old/str_loc_chr22_15-mers_noheader.txt" \
+  --prior "/media/Dagge/UCC/project/microsatellite/prior probabilities/indel_priors_symmetric_15mers_stepsize15.txt" \
+  --isize "isize.txt" \
+  --indelsizemax 90 \
+  --indelstepsize 15 \
+  --refsize 10-250 \
+  --ival 36-450 \
+  --mapq 30
+
